@@ -10,10 +10,8 @@ public class FireBallItem : Item
     private bool _isFlying;
     private Vector3 _flyDirection;
 
-    protected override void Update()
+    private void Update()
     {
-        base.Update();
-
         if (_isFlying)
             FlyingProcess();
     }
@@ -28,11 +26,11 @@ public class FireBallItem : Item
             Execute();
     }
 
-    public override void Use(CharacterStats stats)
+    public override void Use(GameObject user)
     {
-        _flyDirection = Inventory.transform.forward;
+        _flyDirection = user.transform.forward;
 
-        base.Use(stats);
+        base.Use(user);
 
         _isFlying = true;
         _time = 0f;

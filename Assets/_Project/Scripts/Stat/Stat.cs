@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class Stat
 {
-    public Stat(float baseValue)
-    {
-        _baseValue = baseValue;
-    }
-
-    private List<StatModifier> _modifiers = new List<StatModifier>();
+    private List<StatModifier> _modifiers;
     private bool _isNeedToCalcualte = true;
     private float _baseValue;
     private float _finalValue;
 
-    public void AddModifier(float value, string source)
+    public Stat(float baseValue)
     {
-        StatModifier toAdd = new StatModifier(value, source);
-        _modifiers.Add(toAdd);
+        _baseValue = baseValue;
+
+        _modifiers = new List<StatModifier>();
+    }
+
+    public void AddModifier(StatModifier modifier)
+    {
+        _modifiers.Add(modifier);
         _isNeedToCalcualte = true;
     }
 
-    public void RemoveModifier(string source)
+    public void RemoveModifier(string key)
     {
-        _modifiers.RemoveAll(modifier => modifier.Source == source);
+        _modifiers.RemoveAll(modifier => modifier.Key == key);
         _isNeedToCalcualte = true;
     }
 

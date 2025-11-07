@@ -460,9 +460,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5668309359985612470}
   - component: {fileID: 4717767780374717745}
-  - component: {fileID: 7756986797693166272}
+  - component: {fileID: 5186427994770203913}
   m_Layer: 0
-  m_Name: Inventory
+  m_Name: Item Collector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -505,7 +505,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0.4}
---- !u!114 &7756986797693166272
+--- !u!114 &5186427994770203913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -514,10 +514,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4825239753190660680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852a5b924d7c19d4b89f6d5c17bec87b, type: 3}
+  m_Script: {fileID: 11500000, guid: ced42a89e84c8d643b663e8430cdc627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemNode: {fileID: 3365081680146195193}
 --- !u!1 &5708481455673319194
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +530,7 @@ GameObject:
   - component: {fileID: 2065864396804645962}
   - component: {fileID: 7246621733561153468}
   - component: {fileID: 5548660075036076462}
+  - component: {fileID: 1363731741912432860}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -552,9 +552,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2477156262411873193}
-  - {fileID: 5668309359985612470}
   - {fileID: 8886612579261090246}
   - {fileID: 8656680685887448234}
+  - {fileID: 5668309359985612470}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1587778667104995677
@@ -633,6 +633,20 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1363731741912432860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5708481455673319194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a9b091a4ee5484abb21ee4ff174c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemNode: {fileID: 3365081680146195193}
+  _followSpeed: 20
 --- !u!1 &6560841150744458443
 GameObject:
   m_ObjectHideFlags: 0

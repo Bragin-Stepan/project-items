@@ -7,7 +7,7 @@ public class Character : MonoBehaviour
 {
     [SerializeField] private bool _showDebugGui;
     private CharacterController _controller;
-    private CharacterInventory _inventory;
+    private Inventory _inventory;
     private CharacterStats _stats;
     private RotateObject _rotate;
     private CharacterVFX _vfx;
@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
-        _inventory = GetComponentInChildren<CharacterInventory>();
+        _inventory = GetComponentInChildren<Inventory>();
         _controller = GetComponent<CharacterController>();
         _vfx = GetComponentInChildren<CharacterVFX>();
         _stats = GetComponent<CharacterStats>();
@@ -32,7 +32,10 @@ public class Character : MonoBehaviour
         _inputMove = new Vector3(Input.GetAxisRaw(HorizontalNameInput), 0, Input.GetAxisRaw(VerticalNameInput));
 
         if (Input.GetKeyDown(KeyCode.F) && _inventory.Item != null)
-            _inventory.Item.Use(_stats);
+        {
+            _inventory.Item.Use(gameObject);
+            _inventory.Clear();
+        }
     }
 
     private void FixedUpdate()
@@ -54,7 +57,7 @@ public class Character : MonoBehaviour
             GUI.Label(new Rect(20, 20, 200, 20), "Скорость движения: " + _stats.MoveSpeed.GetValue());
             GUI.Label(new Rect(20, 40, 200, 20), "Здоровье: " + _stats.Health.GetValue());
             GUI.Label(new Rect(20, 60, 200, 20), "Использовать предмет: " + "F");
-            GUI.Label(new Rect(20, 80, 200, 20), "Сброс: " + "R");
+            GUI.Label(new Rect(20, 80, 200, 20), "Сброс игры : " + "R");
         }
     }
 }

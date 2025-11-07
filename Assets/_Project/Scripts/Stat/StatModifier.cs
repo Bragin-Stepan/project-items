@@ -4,11 +4,11 @@ using UnityEngine;
 public class StatModifier
 {
     public float Value;
-    public string Source;
+    public string Key;
 
-    public StatModifier(float value, string source)
+    public StatModifier(string key, float value)
     {
         Value = value;
-        Source = source;
+        Key = key;
     }
 }

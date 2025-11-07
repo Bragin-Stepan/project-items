@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
 public abstract class Item : MonoBehaviour
 {
     [SerializeField] private float _rotateSpeed = 2f;
-    [SerializeField] private float _followSpeed = 20f;
 
     public bool IsPickedUp { get; private set; }
 
     protected ItemVFX VFX { get; private set; }
-    protected CharacterInventory Inventory { get; private set; }
 
     protected virtual void Awake()
     {
@@ -24,35 +20,19 @@ public abstract class Item : MonoBehaviour
             HorizontalRotate();
     }
 
-    protected virtual void Update()
+    public virtual void PickUp()
     {
-        if (Inventory != null)
-        {
-            transform.position = Vector3.Lerp(transform.position, Inventory.ItemPosition, _followSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Inventory.transform.rotation, _followSpeed * Time.deltaTime);
-        }
-    }
-
-    public virtual void PickUp(CharacterInventory inventory)
-    {
-        IsPickedUp = true;
-        Inventory = inventory;
         VFX.PickUpEffect();
-    }
-
-    public virtual void Use(CharacterStats stats)
-    {
-        Inventory.UnequipItem();
-        VFX.UseEffect();
-        Inventory = null;
+        IsPickedUp = true;
     }
 
     public virtual void Execute()
     {
-
         VFX.DestroyEffect();
         Destroy(gameObject);
     }
+
+    public virtual void Use(GameObject user) => VFX.UseEffect();
 
     private void HorizontalRotate() => transform.Rotate(0, _rotateSpeed, 0);
 }

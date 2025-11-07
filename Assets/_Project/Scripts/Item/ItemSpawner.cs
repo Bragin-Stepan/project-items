@@ -1,14 +1,10 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-// Почему то компилятор не воспринимал простой Random и пришлось через UnityEngine.Random
 
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] private List<ItemSpawnPoint> _spawnPoints;
     [SerializeField] private float _cooldown;
-
     [SerializeField] private List<Item> _itemPrefabs;
 
     private float _time;
@@ -27,11 +23,11 @@ public class ItemSpawner : MonoBehaviour
                 return;
             }
 
-            ItemSpawnPoint spawnPoint = emptyPoints[UnityEngine.Random.Range(0, emptyPoints.Count)];
+            ItemSpawnPoint spawnPoint = emptyPoints[Random.Range(0, emptyPoints.Count)];
 
             Item item = Instantiate
             (
-                _itemPrefabs[UnityEngine.Random.Range(0, _itemPrefabs.Count)],
+                _itemPrefabs[Random.Range(0, _itemPrefabs.Count)],
                 spawnPoint.transform.position,
                 Quaternion.identity
             );
