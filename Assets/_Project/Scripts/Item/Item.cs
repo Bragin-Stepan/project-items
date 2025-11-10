@@ -26,7 +26,7 @@ public abstract class Item : MonoBehaviour
         IsPickedUp = true;
     }
 
-    public virtual void Execute()
+    public virtual void Destroy()
     {
         VFX.DestroyEffect();
         Destroy(gameObject);

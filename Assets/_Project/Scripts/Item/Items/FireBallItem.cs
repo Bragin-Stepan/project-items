@@ -23,7 +23,7 @@ public class FireBallItem : Item
         transform.position += _flyDirection * _speed * Time.deltaTime;
 
         if (_time >= _lifeTime)
-            Execute();
+            Destroy();
     }
 
     public override void Use(GameObject user)

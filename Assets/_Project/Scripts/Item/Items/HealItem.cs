@@ -14,6 +14,6 @@ public class HealItem : Item
         if (user.TryGetComponent(out CharacterStats stats))
             stats.Health.AddModifier(new StatModifier(ModifierKey, _healthModifier));
 
-        Execute();
+        Destroy();
     }
 }

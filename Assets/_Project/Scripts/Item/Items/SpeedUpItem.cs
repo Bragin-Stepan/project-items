@@ -14,6 +14,6 @@ public class SpeedUpItem : Item
         if (user.TryGetComponent(out CharacterStats stats))
             stats.MoveSpeed.AddModifier(new StatModifier(ModifierKey, _moveSpeedModifier));
 
-        Execute();
+        Destroy();
     }
 }
